@@ -32,8 +32,8 @@ signUp.addEventListener("click", (event) => {
   event.preventDefault();
   const email = document.getElementById("rEmail").value;
   const password = document.getElementById("rPassword").value;
-  const fName = document.getElementById("fName").value;
-  const lName = document.getElementById("lName").value;
+  const firstName = document.getElementById("fName").value;
+  const lastName = document.getElementById("lName").value;
 
   const auth = getAuth();
   const db = getFirestore();
@@ -43,8 +43,8 @@ signUp.addEventListener("click", (event) => {
       const user = userCredential.user;
       const userData = {
         email: email,
-        fName: fName,
-        lName: lName
+        fName: firstName,
+        lName: lastName
       };
       showMessage('Account Created Successfully', 'signupMessage')
       const docRef = doc(db, "users", user.uid);
@@ -65,3 +65,26 @@ signUp.addEventListener("click", (event) => {
       }
     });
 });
+
+const signIn = document.getElementById("submitSignIn");
+signIn.addEventListener("click", event => {
+  event.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const auth = getAuth();
+
+  signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    const user = userCredential.user;
+    localStorage.setItem('loggedInUser', user.uid);
+    window.location.href = "home.html";
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    if(errorCode == 'auth/user-not-found') {
+      showMessage('User not found !', 'signInMessage')}
+    else {
+      showMessage('Incorrect Password !', 'signInMessage');
+    }
+  })
+})
