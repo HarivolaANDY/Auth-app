@@ -3,17 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Welcome</title>
-    <link rel="stylesheet" href="src/style.css">
+    <meta name="description" content="User dashboard - authenticated account space">
+    <title>Dashboard — AuthApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/style.css">
 </head>
-<body>
-    <div class="container">
-        <h1 class="form-title">Welcome Home!</h1>
-        <div id="user-info" style="text-align: center; margin-bottom: 2rem;">
-            <p>You are successfully logged in.</p>
+<body class="auth-bg">
+    <div class="auth-ambient-glow" aria-hidden="true"></div>
+    <div class="auth-ambient-glow-bottom" aria-hidden="true"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <!-- Header with Status Pill -->
+            <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
+                <div class="flex items-center gap-2.5">
+                    <div class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white shadow-sm shadow-indigo-500/20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <span class="font-bold text-slate-800 tracking-tight">AuthApp</span>
+                </div>
+                <div class="inline-flex items-center gap-1.5 py-1 px-2.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Session Active</span>
+                </div>
+            </div>
+
+            <!-- Profile Info Card -->
+            <div id="user-info" role="status" aria-live="polite" class="text-center my-6">
+                <div class="w-20 h-20 mx-auto rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-500 mb-4 animate-pulse">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold text-slate-900 tracking-tight">Welcome Back!</h1>
+                <p class="text-sm text-slate-400 mt-1">Connecting session...</p>
+            </div>
+
+            <!-- Account Security Metadata -->
+            <div class="bg-slate-50/80 rounded-2xl border border-slate-200/80 p-4 mb-6">
+                <div class="flex items-center justify-between text-xs text-slate-500">
+                    <span>Authentication Service</span>
+                    <span class="font-semibold text-slate-700">Firebase Auth v11</span>
+                </div>
+                <div class="flex items-center justify-between text-xs text-slate-500 mt-2.5">
+                    <span>Database Protection</span>
+                    <span class="font-semibold text-slate-700">Cloud Firestore</span>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <button id="logoutBtn" class="w-full py-3 px-4 rounded-xl font-semibold text-sm text-rose-600 bg-rose-50 hover:bg-rose-100 active:scale-[0.99] transition-all border border-rose-200 focus-visible:outline-2 focus-visible:outline-rose-500 flex items-center justify-center gap-2 cursor-pointer">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                <span>Sign Out</span>
+            </button>
         </div>
-        <button id="logoutBtn" class="btn">Logout</button>
     </div>
-    <script type="module" src="src/home.js"></script>
+
+    <script type="module" src="/src/home.js"></script>
 </body>
 </html>

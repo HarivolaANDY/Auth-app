@@ -1,4 +1,32 @@
-node_modules
-dist
+# Dependencies
+node_modules/
+
+# Production build outputs
+dist/
+
+# Local environment files & secrets
 .env
+.env.local
+.env.*.local
+
+# Vite cache
+.vite/
+
+# Firebase cache and logs
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+
+# Operating System files
 .DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
