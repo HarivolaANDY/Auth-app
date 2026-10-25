@@ -1,5 +1,9 @@
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { app } from "./firebaseConfig";
+import { initTheme } from "./theme.js";
+
+// Initialize Dark/Light theme
+initTheme();
 
 const auth = getAuth(app);
 
@@ -18,8 +22,8 @@ onAuthStateChanged(auth, (user) => {
         <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-600 text-white font-bold text-2xl flex items-center justify-center mb-4 shadow-lg shadow-indigo-500/25">
           ${initial}
         </div>
-        <h1 class="text-xl font-bold text-slate-900 tracking-tight">${escapeHtml(displayName)}</h1>
-        <p class="text-sm text-slate-500 mt-1">${escapeHtml(email)}</p>
+        <h1 class="text-xl font-bold text-slate-900 dark:text-white tracking-tight">${escapeHtml(displayName)}</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">${escapeHtml(email)}</p>
       `;
     }
   }

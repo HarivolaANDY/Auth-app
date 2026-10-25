@@ -9,6 +9,10 @@ import {
 import { getFirestore, setDoc, doc } from "firebase/firestore";
 import { app } from "./firebaseConfig";
 import "./ui.js";
+import { initTheme } from "./theme.js";
+
+// Initialize Dark/Light theme
+initTheme();
 
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -30,9 +34,9 @@ function showMessage(message, divId, type = 'info') {
   }
 
   const styles = {
-    success: ['bg-green-50', 'text-green-800', 'border-green-200'],
-    error: ['bg-red-50', 'text-red-800', 'border-red-200'],
-    info: ['bg-blue-50', 'text-blue-800', 'border-blue-200'],
+    success: ['bg-emerald-50', 'text-emerald-800', 'border-emerald-200', 'dark:bg-emerald-950/50', 'dark:text-emerald-300', 'dark:border-emerald-800/60'],
+    error: ['bg-rose-50', 'text-rose-800', 'border-rose-200', 'dark:bg-rose-950/50', 'dark:text-rose-300', 'dark:border-rose-800/60'],
+    info: ['bg-blue-50', 'text-blue-800', 'border-blue-200', 'dark:bg-blue-950/50', 'dark:text-blue-300', 'dark:border-blue-800/60'],
   };
 
   const allStyleClasses = Object.values(styles).flat();

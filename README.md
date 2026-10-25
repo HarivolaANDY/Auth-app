@@ -13,6 +13,11 @@ Application web moderne d'authentification multi-pages basée sur **Vite**, **Ta
   - Garde de navigation sur `home.html` redirigeant vers `index.html` si non authentifié.
   - Détection automatique de session sur `index.html` pour rediriger les utilisateurs déjà connectés.
   - Déconnexion propre (`signOut`) avec réinitialisation de l'état local.
+- **Mode Sombre / Clair (Dark/Light)** :
+  - Détection automatique de la préférence système (`prefers-color-scheme`).
+  - Bouton de bascule interactif (Soleil / Lune) avec transition fluide.
+  - Mémorisation du choix dans le `localStorage`.
+  - Script anti-clignotement (FOUC) intégré dans le `<head>` de chaque page.
 - **Accessibilité & Ergonomie** :
   - Affichage / masquage du mot de passe avec synchronisation visuelle de l'icône et des attributs ARIA (`aria-pressed`, `aria-label`).
   - Alertes dynamiques non intrusives (`aria-live="polite"`).
@@ -32,6 +37,7 @@ Auth-app/
 │   ├── auth.js             # Contrôleur d'authentification et point d'entrée d'index.html
 │   ├── firebaseConfig.js   # Initialisation du SDK Firebase et Analytics sécurisé
 │   ├── home.js             # Contrôleur de l'espace membre et point d'entrée de home.html
+│   ├── theme.js            # Gestionnaire du mode Sombre / Clair et persistance
 │   ├── ui.js               # Basculement d'interface et visibilité des mots de passe
 │   └── style.css           # Feuille de style Tailwind CSS avec tokens réutilisables
 ├── .env.example            # Modèle des variables d'environnement requises

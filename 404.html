@@ -8,18 +8,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/src/style.css">
+    <script>
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
 </head>
 <body class="auth-bg">
+    <!-- Theme Toggle Floating Button -->
+    <button type="button" class="theme-toggle theme-toggle-floating" aria-label="Toggle dark/light theme" title="Basculer le mode sombre/clair">
+        <svg class="icon-sun w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <svg class="icon-moon w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+    </button>
+
     <div class="auth-ambient-glow" aria-hidden="true"></div>
     <div class="auth-ambient-glow-bottom" aria-hidden="true"></div>
 
     <div class="auth-container">
         <div class="auth-card text-center py-10">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-indigo-50 text-indigo-600 border border-indigo-100 mb-4 shadow-sm">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-3xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800/60 mb-4 shadow-sm">
                 <span class="text-2xl font-black tracking-tight">404</span>
             </div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight mb-2">Page Not Found</h1>
-            <p class="text-sm text-slate-500 mb-8 max-w-xs mx-auto">
+            <h1 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight mb-2">Page Not Found</h1>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mb-8 max-w-xs mx-auto">
                 The requested URL was not found on this server. Please check the address or return to the application.
             </p>
             <a href="/index.html" class="btn-primary max-w-xs mx-auto text-decoration-none">
@@ -27,5 +44,10 @@
             </a>
         </div>
     </div>
+
+    <script type="module">
+        import { initTheme } from '/src/theme.js';
+        initTheme();
+    </script>
 </body>
 </html>
